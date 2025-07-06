@@ -1,0 +1,218 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<div class="app-container">
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo">
+        <h1>🏛️ Tax Data Warehouse</h1>
+      </div>
+      <nav class="main-nav">
+        <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+        <a routerLink="/tax-returns" routerLinkActive="active">Tax Returns</a>
+        <a routerLink="/payments" routerLinkActive="active">Payments</a>
+        <a routerLink="/reports" routerLinkActive="active">Reports</a>
+        <a routerLink="/analytics" routerLinkActive="active">Analytics</a>
+        <a routerLink="/audit" routerLinkActive="active">Audit</a>
+        <a routerLink="/users" routerLinkActive="active">Users</a>
+        <a routerLink="/settings" routerLinkActive="active">Settings</a>
+      </nav>
+      <div class="user-menu">
+        <button class="user-button">
+          <span class="user-avatar">👤</span>
+          <span class="user-name">Admin User</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Tax Data Warehouse. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<style>
+  .header {
+    text-align: center;
+    padding: 40px 0;
+    border-bottom: 2px solid #00ff9f;
+    margin-bottom: 40px;
+    box-shadow: 0 0 20px rgba(0, 255, 159, 0.3);
+  }
+
+  .header h1 {
+    font-size: 3rem;
+    margin: 0 0 10px 0;
+    text-shadow: 0 0 20px rgba(57, 255, 20, 0.8), 0 0 40px rgba(57, 255, 20, 0.5);
+    animation: neon-pulse 2s ease-in-out infinite alternate;
+  }
+
+  .header p {
+    font-size: 1.2rem;
+    margin: 0;
+    opacity: 0.9;
+    text-shadow: 0 0 10px rgba(191, 0, 255, 0.5);
+  }
+
+  .section-title {
+    color: #39ff14;
+    font-size: 2rem;
+    margin-bottom: 24px;
+    border-bottom: 2px solid #39ff14;
+    padding-bottom: 8px;
+    text-shadow: 0 0 15px rgba(57, 255, 20, 0.6);
+    box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+  }
+
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .kpi-card {
+    text-align: center;
+    border-left: 4px solid #39ff14;
+    box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+  }
+
+  .kpi-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin: 16px 0 8px 0;
+    text-shadow: 0 0 15px currentColor;
+  }
+
+  .kpi-change {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-shadow: 0 0 8px currentColor;
+  }
+
+  .form-section, .table-section, .chart-section {
+    margin-bottom: 40px;
+  }
+
+  .data-form {
+    max-width: 600px;
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+  }
+
+  .badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 0 5px currentColor;
+  }
+
+  .chart-placeholder {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 40px;
+    height: 300px;
+    padding: 20px;
+  }
+
+  .chart-bar {
+    width: 80px;
+    border-radius: 8px 8px 0 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    box-shadow: 0 0 15px currentColor;
+  }
+
+  .chart-revenue {
+    height: 80%;
+    background: linear-gradient(180deg, #39ff14 0%, #00ff00 100%);
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.6);
+  }
+
+  .chart-expenses {
+    height: 60%;
+    background: linear-gradient(180deg, #bf00ff 0%, #ff00ff 100%);
+    box-shadow: 0 0 20px rgba(191, 0, 255, 0.6);
+  }
+
+  .chart-profit {
+    height: 20%;
+    background: linear-gradient(180deg, #00ffff 0%, #39ff14 100%);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  }
+
+  .chart-label {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    text-shadow: 0 0 5px currentColor;
+  }
+
+  @keyframes neon-pulse {
+    from {
+      text-shadow: 0 0 20px rgba(57, 255, 20, 0.8), 0 0 40px rgba(57, 255, 20, 0.5);
+    }
+    to {
+      text-shadow: 0 0 25px rgba(57, 255, 20, 1), 0 0 50px rgba(57, 255, 20, 0.7), 0 0 70px rgba(57, 255, 20, 0.3);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .header h1 {
+      font-size: 2rem;
+    }
+    
+    .kpi-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .form-actions {
+      flex-direction: column;
+    }
+    
+    .chart-placeholder {
+      flex-direction: column;
+      height: auto;
+      gap: 20px;
+    }
+    
+    .chart-bar {
+      width: 100%;
+      height: 60px !important;
+      border-radius: 8px;
+    }
+  }
+</style>
+
+<router-outlet />

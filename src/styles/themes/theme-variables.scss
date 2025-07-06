@@ -1,0 +1,75 @@
+// Cyberpunk Neon Theme Variables
+// Primary Colors
+$dark-bg-primary: #0a0a0a;
+$dark-bg-secondary: #1a1a2e;
+$dark-bg-tertiary: #16213e;
+$dark-bg-quaternary: #0f3460;
+
+// Text Colors
+$dark-text-primary: #ffffff;
+$dark-text-secondary: #b0b0b0;
+$dark-text-muted: #808080;
+
+// Neon Colors
+$neon-green: #39ff14;
+$lightning-green: #00ff88;
+$electric-purple: #bf00ff;
+$bright-magenta: #ff00ff;
+$cyber-green: #00ff9f;
+$neon-blue: #00ffff;
+$neon-yellow: #ffff00;
+$neon-red: #ff0040;
+$neon-orange: #ff8000;
+
+// Accent Colors Map
+$accent-colors: (
+  success: $neon-green,
+  warning: #ffff00,
+  error: #ff0040,
+  info: #00ffff
+);
+
+// Typography
+$font-family-primary: 'Inter', 'Roboto', sans-serif;
+$font-family-mono: 'Courier New', monospace;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// Border Radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+
+// Shadows
+$shadow-neon-green: 0 0 10px rgba(57, 255, 20, 0.5);
+$shadow-neon-purple: 0 0 10px rgba(191, 0, 255, 0.5);
+$shadow-neon-blue: 0 0 10px rgba(0, 255, 255, 0.5);
+$shadow-neon-red: 0 0 10px rgba(255, 0, 64, 0.5);
+
+// Transitions
+$transition-fast: 0.2s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+// Z-index layers
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070; 
