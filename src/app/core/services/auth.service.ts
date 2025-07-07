@@ -14,9 +14,9 @@ export class AuthService {
 
   private authStateSubject = new BehaviorSubject<AuthState>({
     user: null,
-    token: null,
+    accessToken: null,
     isAuthenticated: false,
-    isLoading: false,
+    loading: false,
     error: null
   });
 
@@ -27,15 +27,15 @@ export class AuthService {
   }
 
   private initializeAuth(): void {
-    const token = this.getStoredToken();
+    const accessToken = this.getStoredToken();
     const user = this.getStoredUser();
     
-    if (token && user) {
+    if (accessToken && user) {
       this.authStateSubject.next({
         user,
-        token,
+        accessToken,
         isAuthenticated: true,
-        isLoading: false,
+        loading: false,
         error: null
       });
     }
@@ -55,9 +55,9 @@ export class AuthService {
           
           const authState: AuthState = {
             user,
-            token,
+            accessToken: token,
             isAuthenticated: true,
-            isLoading: false,
+            loading: false,
             error: null
           };
           
@@ -70,9 +70,9 @@ export class AuthService {
       catchError(error => {
         const authState: AuthState = {
           user: null,
-          token: null,
+          accessToken: null,
           isAuthenticated: false,
-          isLoading: false,
+          loading: false,
           error: error.message || 'Login failed'
         };
         this.authStateSubject.next(authState);
@@ -92,9 +92,9 @@ export class AuthService {
           
           const authState: AuthState = {
             user,
-            token,
+            accessToken: token,
             isAuthenticated: true,
-            isLoading: false,
+            loading: false,
             error: null
           };
           
@@ -107,9 +107,9 @@ export class AuthService {
       catchError(error => {
         const authState: AuthState = {
           user: null,
-          token: null,
+          accessToken: null,
           isAuthenticated: false,
-          isLoading: false,
+          loading: false,
           error: error.message || 'Registration failed'
         };
         this.authStateSubject.next(authState);
@@ -122,20 +122,20 @@ export class AuthService {
     this.clearAuthData();
     this.authStateSubject.next({
       user: null,
-      token: null,
+      accessToken: null,
       isAuthenticated: false,
-      isLoading: false,
+      loading: false,
       error: null
     });
   }
 
   refreshToken(): Observable<AuthState> {
-    const token = this.getStoredToken();
-    if (!token) {
+    const accessToken = this.getStoredToken();
+    if (!accessToken) {
       return throwError(() => new Error('No token to refresh'));
     }
 
-    return this.http.post<ApiResponse<{ user: User; token: string }>>(`${this.API_URL}/refresh`, { token }).pipe(
+    return this.http.post<ApiResponse<{ user: User; token: string }>>(`${this.API_URL}/refresh`, { token: accessToken }).pipe(
       map(response => {
         if (response.success && response.data) {
           const { user, token } = response.data;
@@ -143,9 +143,9 @@ export class AuthService {
           
           const authState: AuthState = {
             user,
-            token,
+            accessToken: token,
             isAuthenticated: true,
-            isLoading: false,
+            loading: false,
             error: null
           };
           
@@ -206,7 +206,7 @@ export class AuthService {
   }
 
   getToken(): string | null {
-    return this.authStateSubject.value.token;
+    return this.authStateSubject.value.accessToken;
   }
 
   isAuthenticated(): boolean {
@@ -223,11 +223,11 @@ export class AuthService {
     return user?.role === role;
   }
 
-  private setLoading(isLoading: boolean): void {
+  private setLoading(loading: boolean): void {
     const currentState = this.authStateSubject.value;
     this.authStateSubject.next({
       ...currentState,
-      isLoading,
+      loading,
       error: null
     });
   }
