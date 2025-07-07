@@ -1,13 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable, of, throwError, ReplaySubject } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { Action } from '@ngrx/store';
 import { AuthEffects } from './auth.effects';
 import * as AuthActions from './auth.actions';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 
 describe('AuthEffects', () => {
-  let actions$: Observable<any>;
+  let actions$: Observable<Action>;
   let effects: AuthEffects;
   let authService: jasmine.SpyObj<AuthService>;
   let router: jasmine.SpyObj<Router>;

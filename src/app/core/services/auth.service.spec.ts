@@ -43,4 +43,33 @@ describe('AuthService', () => {
     expect(req.request.method).toBe('POST');
     req.flush(mockResponse);
   });
+
+  it('should handle login API error', () => {
+    const mockError = { status: 401, statusText: 'Unauthorized' };
+    service.login('test@test.com', 'pass').subscribe({
+      next: () => fail('should have failed with 401 error'),
+      error: (error) => {
+        expect(error.status).toBe(401);
+        expect(error.statusText).toBe('Unauthorized');
+      }
+    });
+    const req = httpMock.expectOne('/api/auth/login');
+    expect(req.request.method).toBe('POST');
+    req.flush({}, mockError);
+  });
+
+  it('should handle register API error', () => {
+    const mockError = { status: 400, statusText: 'Bad Request' };
+    const userData = { email: 'a', password: 'b' };
+    service.register(userData).subscribe({
+      next: () => fail('should have failed with 400 error'),
+      error: (error) => {
+        expect(error.status).toBe(400);
+        expect(error.statusText).toBe('Bad Request');
+      }
+    });
+    const req = httpMock.expectOne('/api/auth/register');
+    expect(req.request.method).toBe('POST');
+    req.flush({}, mockError);
+  });
 });
